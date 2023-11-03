@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.header {
+    text-align: center;
+    color: #005959;
+}
+
+.box {
+    background-color: beige;
+    padding: 20px; /* Adjust the padding as needed */
+    border: 2px solid #ddd; /* Add a border around the box */
+    border-radius: 8px; /* Add rounded corners to the box */
+    width: fit-content; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the box horizontally */
+  }
+  
+  .button {
+    /* Add your button styling here */
+    /* Example: */
+    background-color: #3eb871;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  /* Additional styling for the header */
+  .header {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  
+  
+  
+  
+  
+  
