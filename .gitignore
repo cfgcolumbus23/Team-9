@@ -1,2 +1,4 @@
 Team-9/
-.DS_Store
+
+# OS-specific generated files
+.DS_Store 
