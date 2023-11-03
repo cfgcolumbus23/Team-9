@@ -85,8 +85,13 @@ export default function game() {
     let checkpoints = {1: "checkpoint1", 2: "checkpoint2", 3: "checkpoint3", 4: "checkpoint4", 5: "checkpoint5", 6: "assessment"}
     return (
         <div>
-            <h1 class="text-2xl pt-7" align="center">World {world}</h1>
-            {inCheckpoint ? <Answer question={content["sections"][world-1][checkpoints[progress]]["question"]}/> : <Map />}
+            <h1 class="text-2xl" align="center">World {world}</h1>
+            <Answer question="2+2=" answer="4"/>
+            <div class="grid grid-cols-12 gap-4">
+                <div>01</div>
+                <div>09</div>
+                <div>010</div>
+            </div>
         </div>
     )
     
