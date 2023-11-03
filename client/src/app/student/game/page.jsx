@@ -1,4 +1,5 @@
 import { useState } from "react";
+"use client"
 export default function game() {
     const [world, setWorld] = useState(1);
     return (
