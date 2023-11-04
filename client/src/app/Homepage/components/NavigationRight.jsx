@@ -1,5 +1,5 @@
-import React from 'react';
-import { ButtonSecondary } from './ButtonSecondary';
+import React from "react";
+import { ButtonSecondary } from "./ButtonSecondary";
 
 export const NaviationRight = () => {
   return (
