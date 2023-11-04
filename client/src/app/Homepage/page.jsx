@@ -32,9 +32,15 @@ export default function Desktop() {
           <div className="bg-white p-6 rounded-lg shadow-md">
             <Image src={Parents} alt="Parent" className="rounded-t-lg mb-4" />
             <h2 className="my-5 text-lg md:text-xl">Find a provider!</h2>
+            <a
+              href="http://localhost:3000/parent-page"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
             <button className="w-full bg-blue-500 text-white p-3 rounded">
               Parent
             </button>
+            </a>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -43,7 +49,7 @@ export default function Desktop() {
               Play games and view progress!
             </h2>
             <a
-              href="http://localhost:3000/student"
+              href="http://localhost:3000/student-page"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -61,7 +67,7 @@ export default function Desktop() {
             />
             <h2 className="my-5 text-lg md:text-xl">Create learning game!</h2>
             <a
-              href="http://localhost:3000/provider"
+              href="http://localhost:3000/provider-page"
               target="_blank"
               rel="noopener noreferrer"
             >
