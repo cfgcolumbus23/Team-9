@@ -9,11 +9,11 @@ const MyForm = () => {
     {
       id: 1,
       parts: [
-        { type: 'qa', question: '', answers: ['', '', ''], correctAnswer: 0 },
-        { type: 'qa', question: '', answers: ['', '', ''], correctAnswer: 0 },
-        { type: 'content', content: '' },
-        { type: 'qa', question: '', answers: ['', '', ''], correctAnswer: 0 },
-        { type: 'content', content: '' },
+        { question: '', answers: ['', '', ''], correctAnswer: 0 },
+        { question: '', answers: ['', '', ''], correctAnswer: 0 },
+        { question: '', answers: ['', '', ''], correctAnswer: 0 },
+        { question: '', answers: ['', '', ''], correctAnswer: 0 },
+        { question: '', answers: ['', '', ''], correctAnswer: 0 },
       ],
     },
   ]);
@@ -44,10 +44,10 @@ const MyForm = () => {
                     answers: part.answers.map((ans, ansIndex) =>
                       ansIndex === answerIndex ? value : ans
                     ),
-                    correctAnswer:
-                      answerIndex === part.correctAnswer
-                        ? value
-                        : part.correctAnswer,
+                    correctAnswer: Math.min(
+                      answerIndex,
+                      Math.max(0, part.correctAnswer)
+                    ),
                   }
                 : part
             ),
@@ -71,28 +71,6 @@ const MyForm = () => {
     setSectionData(updatedData);
   };
 
-  const handleSelectChange = (sectionId, partIndex, value) => {
-    const updatedData = sectionData.map((section) =>
-      section.id === sectionId
-        ? {
-            ...section,
-            parts: section.parts.map((part, index) =>
-              index === partIndex
-                ? {
-                    ...part,
-                    type: value,
-                    question: '',
-                    answers: ['', '', ''],
-                    correctAnswer: 0,
-                  }
-                : part
-            ),
-          }
-        : section
-    );
-    setSectionData(updatedData);
-  };
-
   const handleNumSectionsChange = (e) => {
     const value = parseInt(e.target.value, 10);
     setNumSections(value >= 1 ? value : 1);
@@ -104,25 +82,30 @@ const MyForm = () => {
           id: sectionData.length + index + 1,
           parts: [
             {
-              type: 'qa',
               question: '',
               answers: ['', '', ''],
               correctAnswer: 0,
             },
             {
-              type: 'qa',
               question: '',
               answers: ['', '', ''],
               correctAnswer: 0,
             },
-            { type: 'content', content: '' },
             {
-              type: 'qa',
               question: '',
               answers: ['', '', ''],
               correctAnswer: 0,
             },
-            { type: 'content', content: '' },
+            {
+              question: '',
+              answers: ['', '', ''],
+              correctAnswer: 0,
+            },
+            {
+              question: '',
+              answers: ['', '', ''],
+              correctAnswer: 0,
+            },
           ],
         })
       );
@@ -171,106 +154,70 @@ const MyForm = () => {
           <form>
             {section.parts.map((item, index) => (
               <div key={index} className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2">
-                  Type:
-                </label>
-                <select
-                  value={item.type}
-                  onChange={(e) =>
-                    handleSelectChange(section.id, index, e.target.value)
-                  }
-                  className="form-select w-full"
-                >
-                  <option value="qa">Question & Answer</option>
-                  <option value="content">Content</option>
-                </select>
-                {item.type === 'qa' ? (
-                  <>
-                    <div className="mt-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Question:
-                      </label>
+                <div className="mt-4">
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                    Question {index + 1}:
+                  </label>
+                  <input
+                    type="text"
+                    value={item.question}
+                    onChange={(e) =>
+                      handleInputChange(
+                        section.id,
+                        index,
+                        'question',
+                        e.target.value
+                      )
+                    }
+                    className="form-input w-full"
+                  />
+                </div>
+                <div className="mt-4">
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                    Possible Answers:
+                  </label>
+                  {item.answers.map((answer, ansIndex) => (
+                    <div key={ansIndex} className="flex items-center">
+                      <div>{`Answer ${ansIndex + 1}:`}</div>
                       <input
                         type="text"
-                        value={item.question}
+                        value={answer}
                         onChange={(e) =>
-                          handleInputChange(
+                          handleAnswerChange(
                             section.id,
                             index,
-                            'question',
+                            ansIndex,
                             e.target.value
                           )
                         }
-                        className="form-input w-full"
+                        className="form-input w-full ml-2"
                       />
+                      {ansIndex === item.correctAnswer && (
+                        <div className="ml-2">(Correct)</div>
+                      )}
                     </div>
-                    <div className="mt-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Possible Answers:
-                      </label>
-                      {item.answers.map((answer, ansIndex) => (
-                        <div key={ansIndex} className="flex items-center">
-                          <div>{`Answer ${ansIndex + 1}:`}</div>
-                          <input
-                            type="text"
-                            value={answer}
-                            onChange={(e) =>
-                              handleAnswerChange(
-                                section.id,
-                                index,
-                                ansIndex,
-                                e.target.value
-                              )
-                            }
-                            className="form-input w-full ml-2"
-                          />
-                          {ansIndex === item.correctAnswer && (
-                            <div className="ml-2">(Correct)</div>
-                          )}
-                        </div>
-                      ))}
-                      <div className="mt-2">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">
-                          Correct Answer:
-                        </label>
-                        <select
-                          value={item.correctAnswer}
-                          onChange={(e) =>
-                            handleCorrectAnswerChange(
-                              section.id,
-                              index,
-                              parseInt(e.target.value, 10)
-                            )
-                          }
-                          className="form-select w-full"
-                        >
-                          <option value={0}>Answer 1</option>
-                          <option value={1}>Answer 2</option>
-                          <option value={2}>Answer 3</option>
-                        </select>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <div className="mt-4">
+                  ))}
+                  <div className="mt-2">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
-                      Content:
+                      Correct Answer:
                     </label>
-                    <input
-                      type="text"
-                      value={item.content}
+                    <select
+                      value={item.correctAnswer}
                       onChange={(e) =>
-                        handleInputChange(
+                        handleCorrectAnswerChange(
                           section.id,
                           index,
-                          'content',
-                          e.target.value
+                          parseInt(e.target.value, 10)
                         )
                       }
-                      className="form-input w-full"
-                    />
+                      className="form-select w-full"
+                    >
+                      <option value={0}>Answer 1</option>
+                      <option value={1}>Answer 2</option>
+                      <option value={2}>Answer 3</option>
+                    </select>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </form>
