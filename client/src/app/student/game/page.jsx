@@ -32,148 +32,7 @@ const db = getFirestore(app);
 export default function game() {
     
     const [world, setWorld] = useState(1);
-    const [content, setContent] = useState([
-        {
-          "checkpoint5": {
-            "correctAnswer": 0,
-            "answers": [
-              "1",
-              "2",
-              "3"
-            ],
-            "question": "test question"
-          },
-          "checkpoint3": {
-            "question": "What is 6+3",
-            "correctAnswer": 2,
-            "answers": [
-              "1",
-              "3",
-              "9"
-            ]
-          },
-          "assessment": {
-            "correctAnswer1": 0,
-            "answers1": [
-              "10",
-              "20",
-              "30"
-            ],
-            "correctAnswer2": 1,
-            "answers3": [
-              "10",
-              "11",
-              "12"
-            ],
-            "question2": "What is 5-5?",
-            "question3": "What is 10+2?",
-            "answers2": [
-              "2",
-              "0",
-              "4"
-            ],
-            "question1": "What is 7+3?",
-            "correctAnswer3": 2
-          },
-          "checkpoint2": {
-            "correctAnswer": 0,
-            "question": "What is 1+1",
-            "answers": [
-              "2",
-              "1",
-              "4"
-            ]
-          },
-          "checkpoint4": {
-            "answers": [
-              "6",
-              "3",
-              "1"
-            ],
-            "question": "What is 9-3",
-            "correctAnswer": 0
-          },
-          "checkpoint1": {
-            "question": "What is 2+2",
-            "correctAnswer": 1,
-            "answers": [
-              "2",
-              "4",
-              "5"
-            ]
-          }
-        }, 
-        {
-          "checkpoint5": {
-            "correctAnswer": 0,
-            "answers": [
-              "1",
-              "2",
-              "3"
-            ],
-            "question": "test question"
-          },
-          "checkpoint3": {
-            "question": "What is 6+3",
-            "correctAnswer": 2,
-            "answers": [
-              "1",
-              "3",
-              "9"
-            ]
-          },
-          "assessment": {
-            "correctAnswer1": 0,
-            "answers1": [
-              "10",
-              "20",
-              "30"
-            ],
-            "correctAnswer2": 1,
-            "answers3": [
-              "10",
-              "11",
-              "12"
-            ],
-            "question2": "What is 5-5?",
-            "question3": "What is 10+2?",
-            "answers2": [
-              "2",
-              "0",
-              "4"
-            ],
-            "question1": "What is 7+3?",
-            "correctAnswer3": 2
-          },
-          "checkpoint2": {
-            "correctAnswer": 0,
-            "question": "What is 1+1",
-            "answers": [
-              "2",
-              "1",
-              "4"
-            ]
-          },
-          "checkpoint4": {
-            "answers": [
-              "6",
-              "3",
-              "1"
-            ],
-            "question": "What is 9-3",
-            "correctAnswer": 0
-          },
-          "checkpoint1": {
-            "question": "What is 2+2",
-            "correctAnswer": 1,
-            "answers": [
-              "2",
-              "4",
-              "5"
-            ]
-          }
-        }
-      ]); // Static data before we get firestore sorted
+    const [content, setContent] = useState([])
     const [inCheckpoint, toggleInCheckpoint] = useState(false);
     const [assessmentReady, toggleAssessmentReady] = useState(false);
     const [progress, setProgress] = useState(1);
@@ -183,6 +42,12 @@ export default function game() {
             console.log("assessment ready");
         }
     }, [progress])
+    // Populate content from our example firestore document
+    useEffect(() => {
+      async function getData() {
+        await setDoc(doc(db, "curriculums", "n8sFGORfeypyFRC1dOcn"), data);
+      }
+    }, [])
     const colors = ["bg-red-100", "bg-orange-100", "bg-yellow-100", "bg-green-100", "bg-blue-100", "bg-purple-100", "bg-violet-100"];
     function enterCheckpoint(questionNumber)    {
         if (progress < questionNumber) {
