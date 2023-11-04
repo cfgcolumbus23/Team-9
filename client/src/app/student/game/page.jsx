@@ -258,6 +258,8 @@ export default function game() {
         useEffect(() => {
             if (isAnswerCorrectOne && isAnswerCorrectTwo && isAnswerCorrectThree) {
                 setWorld(world+1);
+                setProgress(1);
+                toggleAssessmentReady(false);
                 props.stateChanger(false);
             }
         }, [isAnswerCorrectOne, isAnswerCorrectTwo, isAnswerCorrectThree]);
