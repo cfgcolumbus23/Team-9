@@ -9,10 +9,10 @@ const MyForm = () => {
     {
       id: 1,
       parts: [
-        { type: 'qa', question: '', answer: '' },
-        { type: 'qa', question: '', answer: '' },
+        { type: 'qa', question: '', answers: ['', '', ''], correctAnswer: 0 },
+        { type: 'qa', question: '', answers: ['', '', ''], correctAnswer: 0 },
         { type: 'content', content: '' },
-        { type: 'qa', question: '', answer: '' },
+        { type: 'qa', question: '', answers: ['', '', ''], correctAnswer: 0 },
         { type: 'content', content: '' },
       ],
     },
@@ -32,6 +32,45 @@ const MyForm = () => {
     setSectionData(updatedData);
   };
 
+  const handleAnswerChange = (sectionId, partIndex, answerIndex, value) => {
+    const updatedData = sectionData.map((section) =>
+      section.id === sectionId
+        ? {
+            ...section,
+            parts: section.parts.map((part, index) =>
+              index === partIndex
+                ? {
+                    ...part,
+                    answers: part.answers.map((ans, ansIndex) =>
+                      ansIndex === answerIndex ? value : ans
+                    ),
+                    correctAnswer:
+                      answerIndex === part.correctAnswer
+                        ? value
+                        : part.correctAnswer,
+                  }
+                : part
+            ),
+          }
+        : section
+    );
+    setSectionData(updatedData);
+  };
+
+  const handleCorrectAnswerChange = (sectionId, partIndex, value) => {
+    const updatedData = sectionData.map((section) =>
+      section.id === sectionId
+        ? {
+            ...section,
+            parts: section.parts.map((part, index) =>
+              index === partIndex ? { ...part, correctAnswer: value } : part
+            ),
+          }
+        : section
+    );
+    setSectionData(updatedData);
+  };
+
   const handleSelectChange = (sectionId, partIndex, value) => {
     const updatedData = sectionData.map((section) =>
       section.id === sectionId
@@ -43,8 +82,8 @@ const MyForm = () => {
                     ...part,
                     type: value,
                     question: '',
-                    answer: '',
-                    content: '',
+                    answers: ['', '', ''],
+                    correctAnswer: 0,
                   }
                 : part
             ),
@@ -64,10 +103,25 @@ const MyForm = () => {
         (_, index) => ({
           id: sectionData.length + index + 1,
           parts: [
-            { type: 'qa', question: '', answer: '' },
-            { type: 'qa', question: '', answer: '' },
+            {
+              type: 'qa',
+              question: '',
+              answers: ['', '', ''],
+              correctAnswer: 0,
+            },
+            {
+              type: 'qa',
+              question: '',
+              answers: ['', '', ''],
+              correctAnswer: 0,
+            },
             { type: 'content', content: '' },
-            { type: 'qa', question: '', answer: '' },
+            {
+              type: 'qa',
+              question: '',
+              answers: ['', '', ''],
+              correctAnswer: 0,
+            },
             { type: 'content', content: '' },
           ],
         })
@@ -152,21 +206,49 @@ const MyForm = () => {
                     </div>
                     <div className="mt-4">
                       <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Answer:
+                        Possible Answers:
                       </label>
-                      <input
-                        type="text"
-                        value={item.answer}
-                        onChange={(e) =>
-                          handleInputChange(
-                            section.id,
-                            index,
-                            'answer',
-                            e.target.value
-                          )
-                        }
-                        className="form-input w-full"
-                      />
+                      {item.answers.map((answer, ansIndex) => (
+                        <div key={ansIndex} className="flex items-center">
+                          <div>{`Answer ${ansIndex + 1}:`}</div>
+                          <input
+                            type="text"
+                            value={answer}
+                            onChange={(e) =>
+                              handleAnswerChange(
+                                section.id,
+                                index,
+                                ansIndex,
+                                e.target.value
+                              )
+                            }
+                            className="form-input w-full ml-2"
+                          />
+                          {ansIndex === item.correctAnswer && (
+                            <div className="ml-2">(Correct)</div>
+                          )}
+                        </div>
+                      ))}
+                      <div className="mt-2">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                          Correct Answer:
+                        </label>
+                        <select
+                          value={item.correctAnswer}
+                          onChange={(e) =>
+                            handleCorrectAnswerChange(
+                              section.id,
+                              index,
+                              parseInt(e.target.value, 10)
+                            )
+                          }
+                          className="form-select w-full"
+                        >
+                          <option value={0}>Answer 1</option>
+                          <option value={1}>Answer 2</option>
+                          <option value={2}>Answer 3</option>
+                        </select>
+                      </div>
                     </div>
                   </>
                 ) : (
