@@ -7,13 +7,13 @@ import LogoWhite from './images/logo white.png';
 import styles from './styles/globalStyles.module.css';
 
 import React from 'react';
- //fix
+//fix
 export default function Desktop() {
   return (
     <div
       className={styles.container}
       style={{
-        backgroundImage: `url('https://images.pexels.com/photos/743986/pexels-photo-743986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`, 
+        backgroundImage: `url('https://images.pexels.com/photos/743986/pexels-photo-743986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
@@ -42,7 +42,7 @@ export default function Desktop() {
               View your child's progress!
             </h2>
             <a
-              href="http://localhost:3000/ParentPage/ParentPageContent"
+              href="http://localhost:3000/ParentPage/Login"
               target="_blank"
               rel="noopener noreferrer"
             >
