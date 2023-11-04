@@ -176,7 +176,7 @@ export default function game() {
       ]); // Static data before we get firestore sorted
     const [inCheckpoint, toggleInCheckpoint] = useState(false);
     const [assessmentReady, toggleAssessmentReady] = useState(false);
-    const [progress, setProgress] = useState(1);
+    const [progress, setProgress] = useState(6);
     useEffect(() => {
         if (progress == 6) {
             toggleAssessmentReady(true);
@@ -255,12 +255,16 @@ export default function game() {
         const [isAnswerCorrectOne, setIsAnswerCorrectOne] = useState(false);
         const [isAnswerCorrectTwo, setIsAnswerCorrectTwo] = useState(false);
         const [isAnswerCorrectThree, setIsAnswerCorrectThree] = useState(false);
+        async function sendSMS() {
+          await fetch("http://localhost:5001/send-sms");
+        }
         useEffect(() => {
             if (isAnswerCorrectOne && isAnswerCorrectTwo && isAnswerCorrectThree) {
                 setWorld(world+1);
                 setProgress(1);
                 toggleAssessmentReady(false);
                 props.stateChanger(false);
+                sendSMS();
             }
         }, [isAnswerCorrectOne, isAnswerCorrectTwo, isAnswerCorrectThree]);
         function handleButtonClickQ1(answer) {

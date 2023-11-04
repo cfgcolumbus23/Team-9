@@ -4,7 +4,7 @@ const twilio = require('twilio');
 const app = express();
 app.use(express.json());
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
     console.log("Server Listening on PORT:", PORT);
@@ -40,7 +40,7 @@ app.get("/send-sms", (request, response) => {
         const { sid } = client.messages.create({
             from: TWILIO_PHONE_NUMBER,
             to: +15133449912,
-            body: "Hello",
+            body: "Your child finished section 1 of thier math curriculum!",
         });
 
         response.send({
