@@ -114,8 +114,14 @@ export default function game() {
         }
     }, [progress])
     const colors = ["bg-red-100", "bg-orange-100", "bg-yellow-100", "bg-green-100", "bg-blue-100", "bg-purple-100", "bg-violet-100"];
-    function enterCheckpoint()    {
-        toggleInCheckpoint(true);
+    function enterCheckpoint(questionNumber)    {
+        if (progress < questionNumber) {
+            window.alert("You haven't reached this level yet! Please click on question " + progress);
+        } else if (progress > questionNumber) {
+            window.alert("You've already finished this level! Please click on question " + progress);
+        }else {
+            toggleInCheckpoint(true);
+        }
         
     };
     function Response(props) {
@@ -267,32 +273,32 @@ export default function game() {
             <div class="">
                 <div class="w-[1280px] h-[832px] relative bg-transparent">
                     <div class="left-[85px] top-[235px] absolute">
-                        <button onClick={enterCheckpoint}>
+                        <button onClick={() => enterCheckpoint(1)}>
                             <Checkpoint type="quiz" color="bg-red-500" number="1"/>
                         </button>
                     </div>
                     <div class="w-[95px] h-[95px] z-10 left-[265px] top-[403px] absolute">
-                        <button onClick={enterCheckpoint}>
+                        <button onClick={() => enterCheckpoint(2)}>
                             <Checkpoint type="quiz" color="bg-green-500" number="2"/>
                         </button>
                     </div>
                     <div class="w-[95px] h-[95px] z-10 left-[501px] top-[471px] absolute">
-                        <button onClick={enterCheckpoint}>
+                        <button onClick={() => enterCheckpoint(3)}>
                             <Checkpoint type="quiz" color="bg-blue-500" number="3"/>
                         </button>
                     </div>
                     <div class="w-[95px] h-[95px] left-[701px] z-10 top-[307px] absolute">
-                        <button onClick={enterCheckpoint}>
+                        <button onClick={() => enterCheckpoint(4)}>
                             <Checkpoint type="quiz" color="bg-purple-500" number="4"/>  
                         </button>
                     </div>
                     <div class="w-[95px] h-[95px] left-[934px] top-[201px] absolute">
-                        <button onClick={enterCheckpoint}>
+                        <button onClick={() => enterCheckpoint(5)}>
                             <Checkpoint type="quiz" color="bg-orange-500" number="5"/>
                         </button>
                     </div>
                     <div class="top-[351px] left-[1117px] absolute"> 
-                        <button>
+                        <button onClick={() => enterCheckpoint(6)}>
                             <Assessment />
                         </button>
                     </div>
