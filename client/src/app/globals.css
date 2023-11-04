@@ -33,6 +33,10 @@
     animation: bubble 0.4s ease-out;
 }
 
+.hover:hover {
+    filter: brightness(85%);
+}
+
 button#closePopup {
     border-width: 1px;
     border-color: black;
@@ -72,8 +76,16 @@ button#closePopup {
     justify-content: center; /* Vertically center content */
 }
 
-  
-  
+.background-image {
+    background-image: url("https://img.freepik.com/premium-photo/festive-easter-candy-pastel-colors-form-pyramids-lollipops_124507-32737.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh; /* Use 100vh to cover the entire viewport height */
+}
+
+
   
   
   
