@@ -1,4 +1,3 @@
-
 import Image from 'next/image'
 import Parents from './images/parents.png';
 import Children from './images/children.png';
@@ -11,8 +10,8 @@ import React from "react";
 export default function Desktop() {
   return (
     <div className={styles.container}>
-      <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div className={styles.container}>
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex items-center justify-between">
           <Image src={Logo} alt="Logo" className="h-10 w-auto" />
           <h1 className="text-2xl font-semibold text-gray-800">
             Customize Your Learning!
@@ -24,7 +23,7 @@ export default function Desktop() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
           <div className="bg-white p-6 rounded-lg shadow-md">
             <Image
               src={Parents}
@@ -72,7 +71,7 @@ export default function Desktop() {
           </div>
         </div>
 
-        <div className={styles.container}>
+        <div className="mt-8">
           <div className="flex justify-between items-center mb-4">
             <Image src={Logo} alt="Logo" className="h-10 w-auto" />
             <div className="text-gray-600">
@@ -91,7 +90,4 @@ export default function Desktop() {
       </div>
     </div>
   );
-
 }
-
-
