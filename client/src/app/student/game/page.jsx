@@ -31,6 +31,20 @@ export default function game() {
     const colors = ["bg-red-100", "bg-orange-100", "bg-yellow-100", "bg-green-100", "bg-blue-100", "bg-purple-100", "bg-violet-100"];
 
     // populate content
+
+    const onSubmit = async (e) => {
+        await e.preventDefault();
+    
+        const res = await fetch("/api/sendMessages", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ to: number, body: body }),
+        });
+    
+        const data = await res.json();
+    }
     
     function Map() {
         const getData = async () => {
@@ -47,7 +61,7 @@ export default function game() {
             <div className="background-image">
                 <div class="w-[1280px] h-[832px] relative bg-transparent">
                     <div class="left-[85px] top-[235px] absolute">
-                        <button onClick={enterCheckpoint}>
+                        <button onClick={onSubmit}>
                             <Checkpoint type="quiz" color="bg-red-500" number="1"/>
                         </button>
                     </div>
