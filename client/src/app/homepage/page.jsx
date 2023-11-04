@@ -76,7 +76,7 @@ export default function Desktop() {
             />
             <h2 className="my-5 text-lg md:text-xl">Create learning game!</h2>
             <a
-              href="http://localhost:3000/provider-page"
+              href="http://localhost:3000/provider-page/select-games"
               target="_blank"
               rel="noopener noreferrer"
             >

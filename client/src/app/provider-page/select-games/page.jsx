@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import styles from "./styles/globalStyles.css";
+import styles from './styles/globalStyles.css';
 
-import React from "react";
+import React from 'react';
 //fix
 export default function Desktop() {
   return (
@@ -10,13 +10,13 @@ export default function Desktop() {
       className={styles.container}
       style={{
         backgroundImage: `url('https://images.pexels.com/photos/743986/pexels-photo-743986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex items-center justify-between">
-          <Image src={Logo} alt="Logo" className="h-10 w-auto" />
+          {/* <Image src={Logo} alt="Logo" className="h-10 w-auto" /> */}
           <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold">
             Customize Your Learning!
           </h1>
@@ -33,12 +33,12 @@ export default function Desktop() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <Image src={Parents} alt="Parent" className="rounded-t-lg mb-4" />
+            {/* <Image src={Parents} alt="Parent" className="rounded-t-lg mb-4" /> */}
             <h2 className="my-5 text-lg md:text-xl">
               View your child's progress!
             </h2>
             <a
-              href="http://localhost:3000/ParentPage/Login"
+              href="http://localhost:3000/provider-page/content"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -49,7 +49,7 @@ export default function Desktop() {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <Image src={Children} alt="Student" className="rounded-t-lg mb-4" />
+            {/* <Image src={Children} alt="Student" className="rounded-t-lg mb-4" /> */}
             <h2 className="my-5 text-lg md:text-xl">
               Play games and view progress!
             </h2>
@@ -65,11 +65,11 @@ export default function Desktop() {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <Image
+            {/* <Image
               src={Provider}
               alt="Provider"
               className="rounded-t-lg mb-4"
-            />
+            /> */}
             <h2 className="my-5 text-lg md:text-xl">Create learning game!</h2>
             <a
               href="http://localhost:3000/provider-page"
@@ -85,7 +85,7 @@ export default function Desktop() {
 
         <div className="mt-8 bg-[#005959]">
           <div className="flex justify-between items-center mb-4">
-            <Image src={LogoWhite} alt="Logo" className="h-10 w-auto" />
+            {/* <Image src={LogoWhite} alt="Logo" className="h-10 w-auto" /> */}
             <div className="text-white">
               <p>215 North Front St, Ste 620</p>
               <p>Columbus, Ohio 43215</p>
