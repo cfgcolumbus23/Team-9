@@ -73,22 +73,24 @@ export default function Desktop() {
         </div>
 
         <div className={styles.container}>
-          <div className="flex justify-between items-center mb-4">
-            <Image src={Logo} alt="Logo" className="h-10 w-auto" />
-            <div className="text-gray-600">
-              <p>215 North Front St, Ste 620</p>
-              <p>Columbus, Ohio 43215</p>
+          <div className="mt-12 bg-green-500 p-6 rounded-lg shadow-md">
+            <div className="flex justify-between items-center mb-4">
+              <Image src={Logo} alt="Logo" className="h-10 w-auto" />
+              <div className="text-gray-600">
+                <p>215 North Front St, Ste 620</p>
+                <p>Columbus, Ohio 43215</p>
+              </div>
+             <div>
+                <p className="text-gray-600">Phone: 614-502-1837</p>
+                <p className="text-gray-600">Email: info@futurereadyfive.org</p>
+              </div>
             </div>
-            <div>
-              <p className="text-gray-600">Phone: 614-502-1837</p>
-              <p className="text-gray-600">Email: info@futurereadyfive.org</p>
-            </div>
+            <p className="text-center text-gray-600">
+              &copy; 2022 Future Ready Five. All Rights Reserved
+            </p>
           </div>
-          <p className="text-center text-gray-600">
-            &copy; 2022 Future Ready Five. All Rights Reserved
-          </p>
         </div>
-      </div>
+        </div>
     </div>
   );
 
