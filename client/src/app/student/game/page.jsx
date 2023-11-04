@@ -55,25 +55,25 @@ export default function game() {
           "assessment": {
             "correctAnswer1": 0,
             "answers1": [
-              "1",
-              "2",
-              "3"
+              "10",
+              "20",
+              "30"
             ],
-            "correctAnswer2": 0,
+            "correctAnswer2": 1,
             "answers3": [
-              "",
-              "",
-              ""
+              "10",
+              "11",
+              "12"
             ],
-            "question2": "",
-            "question3": "",
+            "question2": "What is 5-5?",
+            "question3": "What is 10+2?",
             "answers2": [
-              "",
-              "",
-              ""
+              "2",
+              "0",
+              "4"
             ],
-            "question1": "Please work",
-            "correctAnswer3": 0
+            "question1": "What is 7+3?",
+            "correctAnswer3": 2
           },
           "checkpoint2": {
             "correctAnswer": 0,
@@ -106,15 +106,15 @@ export default function game() {
       ]); // Static data before we get firestore sorted
     const [inCheckpoint, toggleInCheckpoint] = useState(false);
     const [assessmentReady, toggleAssessmentReady] = useState(false);
-    const [progress, setProgress] = useState(1);
+    const [progress, setProgress] = useState(6);
     useEffect(() => {
-        if (progress == 5) {
+        if (progress == 6) {
             toggleAssessmentReady(true);
             console.log("assessment ready");
         }
     }, [progress])
     const colors = ["bg-red-100", "bg-orange-100", "bg-yellow-100", "bg-green-100", "bg-blue-100", "bg-purple-100", "bg-violet-100"];
-    function enterCheckpoint(questionNumber)    {
+    function enterCheckpoint()    {
         toggleInCheckpoint(true);
         
     };
@@ -173,12 +173,98 @@ export default function game() {
           </div>
         );
       }
+
+    function AssessmentPopup(props) {
+        const [isPopupVisible, setPopupVisible] = useState(false);
+        const [isAnswerCorrectOne, setIsAnswerCorrectOne] = useState(false);
+        const [isAnswerCorrectTwo, setIsAnswerCorrectTwo] = useState(false);
+        const [isAnswerCorrectThree, setIsAnswerCorrectThree] = useState(false);
+        useEffect(() => {
+            if (isAnswerCorrectOne && isAnswerCorrectTwo && isAnswerCorrectThree) {
+                setWorld(world+1);
+                props.stateChanger(false);
+            }
+        }, [isAnswerCorrectOne, isAnswerCorrectTwo, isAnswerCorrectThree]);
+        function handleButtonClickQ1(answer) {
+            if (answer == props.assessmentData.correctAnswer1) {
+              setIsAnswerCorrectOne(true);
+              setPopupVisible(true);
+            } else {
+              setIsAnswerCorrectTwo(false);
+              setPopupVisible(true);
+            }
+          }
+          function handleButtonClickQ2(answer) {
+            if (answer == props.assessmentData.correctAnswer2) {
+              setIsAnswerCorrectTwo(true);
+              setPopupVisible(true);
+            } else {
+              setIsAnswerCorrecTwo(false);
+              setPopupVisible(true);
+            }
+          }
+          function handleButtonClickQ3(answer) {
+            if (answer == props.assessmentData.correctAnswer3) {
+              setIsAnswerCorrectThree(true);
+              setPopupVisible(true);
+            } else {
+              setIsAnswerCorrectThree(false);
+              setPopupVisible(true);
+            }
+          }
+        
+          function closePopup() {
+            setPopupVisible(false);
+          }
+        return (
+            <div className="box">
+              <h1 className="col-span-3 header">Question 1: {props.assessmentData.question1} {isAnswerCorrectOne ? <p>&#10004;</p> : null}</h1>
+              <button onClick={() => handleButtonClickQ1(0)} className="button">
+                 {props.assessmentData.answers1[0]} 
+              </button>
+              <button onClick={() => handleButtonClickQ1(1)} className="button">
+                {props.assessmentData.answers1[1]}
+              </button>
+              <button onClick={() => handleButtonClickQ1(2)} className="button">
+                {props.assessmentData.answers1[2]}
+              </button>
+
+              <h1 className="col-span-3 header">Question 2: {props.assessmentData.question2} {isAnswerCorrectTwo ? <p>&#10004;</p> : null}</h1>
+              <button onClick={() => handleButtonClickQ2(0)} className="button">
+                 {props.assessmentData.answers2[0]}
+              </button>
+            <button onClick={() => handleButtonClickQ2(1)} className="button">
+                {props.assessmentData.answers2[1]}
+              </button>
+              <button onClick={() => handleButtonClickQ2(2)} className="button">
+                {props.assessmentData.answers2[2]}
+              </button>
+
+              <h1 className="col-span-3 header">Question 3: {props.assessmentData.question3} {isAnswerCorrectThree ? <p>&#10004;</p> : null}</h1>
+              <button onClick={() => handleButtonClickQ3(0)} className="button">
+                 {props.assessmentData.answers3[0]}
+              </button>
+              <button onClick={() => handleButtonClickQ3(1)} className="button">
+                {props.assessmentData.answers3[1]}
+              </button>
+              <button onClick={() => handleButtonClickQ3(2)} className="button">
+                {props.assessmentData.answers3[2]}
+              </button>
+              {isPopupVisible && (
+                <Response
+                  message={isAnswerCorrectOne ? "Correct answer!" : "Wrong answer."}
+                  closePopup={closePopup}
+                />
+              )}
+            </div>
+          );
+    }
     
     function Map() {
         
         
         return (
-            <div class="background-image">
+            <div class="">
                 <div class="w-[1280px] h-[832px] relative bg-transparent">
                     <div class="left-[85px] top-[235px] absolute">
                         <button onClick={enterCheckpoint}>
@@ -238,7 +324,7 @@ export default function game() {
     return (
         <div>
             <h1 class="text-2xl pt-7" align="center">World {world}</h1>
-            {inCheckpoint ? <CheckpointPopup question={content[world-1][checkpoints[progress]]["question"]} answer={content[world-1][checkpoints[progress]]["correctAnswer"]} answerChoices={content[world-1][checkpoints[progress]]["answers"]} stateChanger={toggleInCheckpoint}/> : <Map />}
+            {inCheckpoint ? (assessmentReady ? <AssessmentPopup assessmentData={content[world-1]["assessment"]} stateChanger={toggleInCheckpoint} /> : <CheckpointPopup question={content[world-1][checkpoints[progress]]["question"]} answer={content[world-1][checkpoints[progress]]["correctAnswer"]} answerChoices={content[world-1][checkpoints[progress]]["answers"]} stateChanger={toggleInCheckpoint}/>) : <Map />}
         </div>
     )
     
