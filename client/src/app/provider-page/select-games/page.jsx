@@ -42,7 +42,7 @@ export default function Desktop() {
           <div className="bg-white p-6 rounded-lg shadow-md">
             <Image src={mono} alt="candy" className="rounded-t-lg mb-4" />
             <h2 className="my-5 text-lg md:text-xl">
-              View your child's progress!
+              Monopoly version
             </h2>
             <a
               href="http://localhost:3000/provider-page/content"
@@ -50,7 +50,7 @@ export default function Desktop() {
               rel="noopener noreferrer"
             >
               <button className="w-full bg-blue-500 text-white p-3 rounded">
-                Parent
+                Input
               </button>
             </a>
           </div>
@@ -64,29 +64,29 @@ export default function Desktop() {
               />
             }
             <h2 className="my-5 text-lg md:text-xl">
-              Play games and view progress!
+              Minecraft version
             </h2>
             <a
-              href="http://localhost:3000/student-page"
+              href="http://localhost:3000/provider-page/content"
               target="_blank"
               rel="noopener noreferrer"
             >
               <button className="w-full bg-blue-500 text-white p-3 rounded">
-                Student
+                Input
               </button>
             </a>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">
             {<Image src={rgb} alt="RPG" className="rounded-t-lg mb-4" />}
-            <h2 className="my-5 text-lg md:text-xl">Create learning game!</h2>
+            <h2 className="my-5 text-lg md:text-xl"> Battle game version</h2>
             <a
-              href="http://localhost:3000/provider-page"
+              href="http://localhost:3000/provider-page/content"
               target="_blank"
               rel="noopener noreferrer"
             >
               <button className="w-full bg-blue-500 text-white p-3 rounded">
-                Provider
+                Input
               </button>
             </a>
           </div>
