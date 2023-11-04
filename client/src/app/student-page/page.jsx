@@ -59,7 +59,6 @@ export default function Desktop() {
             </button>
           </div>
         </div>
-
         {/* Footer */}
         <div
           className="bg-[#005959] text-white py-4 px-4 flex justify-between items-center"
