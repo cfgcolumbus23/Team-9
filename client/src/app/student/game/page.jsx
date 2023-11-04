@@ -8,21 +8,7 @@ import { Assessment } from "./components/assessment";
 import { Checkpoint } from "./components/checkpoint";
 
 const firebaseConfig = {
-
-    apiKey: "***REMOVED***",
-
-    authDomain: "team9-cfg-99712.firebaseapp.com",
-
-    projectId: "team9-cfg-99712",
-
-    storageBucket: "team9-cfg-99712.appspot.com",
-
-    messagingSenderId: "673571130811",
-
-    appId: "1:673571130811:web:5d5b97b9929938e5af089e",
-
-    measurementId: "G-728Z36QH6Q"
-  
+  // Redacted
 };
 
 const app = initializeApp(firebaseConfig);
