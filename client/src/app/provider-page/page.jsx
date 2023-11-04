@@ -85,93 +85,108 @@ const MyForm = () => {
   };
 
   return (
-    <div>
-      <div>
-        <label>
+    <div className="max-w-lg mx-auto mt-8 p-4 border rounded shadow bg-white">
+      <div className="mb-4">
+        <label className="block text-gray-700 text-sm font-bold mb-2">
           Number of Sections:
+        </label>
+        <div className="flex items-center">
           <input
             type="number"
             value={numSections}
             onChange={handleNumSectionsChange}
             min="1"
+            className="form-input w-16"
           />
-          <button onClick={() => setNumSections(numSections + 1)}>+</button>
-          <button onClick={() => setNumSections(Math.max(1, numSections - 1))}>
+          <button
+            onClick={() => setNumSections(numSections + 1)}
+            className="ml-2 px-3 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+          >
+            +
+          </button>
+          <button
+            onClick={() => setNumSections(Math.max(1, numSections - 1))}
+            className="ml-2 px-3 py-2 bg-red-500 text-white rounded hover:bg-red-700"
+          >
             -
           </button>
-        </label>
+        </div>
       </div>
       {sectionData.map((section) => (
-        <div key={section.id}>
+        <div key={section.id} className="mb-6">
           <form>
             {section.parts.map((item, index) => (
-              <div key={index}>
-                <label>
+              <div key={index} className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
                   Type:
-                  <select
-                    value={item.type}
-                    onChange={(e) =>
-                      handleSelectChange(section.id, index, e.target.value)
-                    }
-                  >
-                    <option value="qa">Question & Answer</option>
-                    <option value="content">Content</option>
-                  </select>
                 </label>
+                <select
+                  value={item.type}
+                  onChange={(e) =>
+                    handleSelectChange(section.id, index, e.target.value)
+                  }
+                  className="form-select w-full"
+                >
+                  <option value="qa">Question & Answer</option>
+                  <option value="content">Content</option>
+                </select>
                 {item.type === 'qa' ? (
                   <>
-                    <div>
-                      <label>
+                    <div className="mt-4">
+                      <label className="block text-gray-700 text-sm font-bold mb-2">
                         Question:
-                        <input
-                          type="text"
-                          value={item.question}
-                          onChange={(e) =>
-                            handleInputChange(
-                              section.id,
-                              index,
-                              'question',
-                              e.target.value
-                            )
-                          }
-                        />
                       </label>
-                    </div>
-                    <div>
-                      <label>
-                        Answer:
-                        <input
-                          type="text"
-                          value={item.answer}
-                          onChange={(e) =>
-                            handleInputChange(
-                              section.id,
-                              index,
-                              'answer',
-                              e.target.value
-                            )
-                          }
-                        />
-                      </label>
-                    </div>
-                  </>
-                ) : (
-                  <div>
-                    <label>
-                      Content:
                       <input
                         type="text"
-                        value={item.content}
+                        value={item.question}
                         onChange={(e) =>
                           handleInputChange(
                             section.id,
                             index,
-                            'content',
+                            'question',
                             e.target.value
                           )
                         }
+                        className="form-input w-full"
                       />
+                    </div>
+                    <div className="mt-4">
+                      <label className="block text-gray-700 text-sm font-bold mb-2">
+                        Answer:
+                      </label>
+                      <input
+                        type="text"
+                        value={item.answer}
+                        onChange={(e) =>
+                          handleInputChange(
+                            section.id,
+                            index,
+                            'answer',
+                            e.target.value
+                          )
+                        }
+                        className="form-input w-full"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <div className="mt-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                      Content:
                     </label>
+                    <input
+                      type="text"
+                      value={item.content}
+                      onChange={(e) =>
+                        handleInputChange(
+                          section.id,
+                          index,
+                          'content',
+                          e.target.value
+                        )
+                      }
+                      className="form-input w-full"
+                    />
                   </div>
                 )}
               </div>
@@ -179,7 +194,12 @@ const MyForm = () => {
           </form>
         </div>
       ))}
-      <button onClick={handleSubmit}>Submit</button>
+      <button
+        onClick={handleSubmit}
+        className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700"
+      >
+        Submit
+      </button>
     </div>
   );
 };
