@@ -7,7 +7,7 @@ import LogoWhite from './images/logo white.png';
 import styles from './styles/globalStyles.module.css';
 
 import React from 'react';
-
+ //fix
 export default function Desktop() {
   return (
     <div
