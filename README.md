@@ -12,4 +12,4 @@ We "game-ified" the process of intervention for students, while making it easy f
 - D'Andre Williams created the homepage for our web application and implemented SMS text messaging features.
 - Leo Zhang created components including popups, question templates and an answer verification framework for the game portion of our project, and assisted D'Andre in implementing SMS text messaging.
 - Rory Rodriguez created a framework for intervention providers to outline a curriculum to be used as the game content and assisted in the creation of the static webpage portions of our project.
-- Mhgoub Mustafa contributed heavily to the static webpage portion of our project, using Figma and HTML/CSS to create a consistent design.
+- Mhgoub Mustafa  worked on designing and coding webpages for the mainpage, and  parents portals using HTML/CSS.
