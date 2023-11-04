@@ -1,8 +1,32 @@
 'use client';
 
 import React, { useState } from 'react';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, doc, addDoc, collection } from 'firebase/firestore';
 
-const MyForm = () => {
+const firebaseConfig = {
+
+  apiKey: "AIzaSyBODLqsYeOWlBt56FBqTPfJAe2iwmCzE7I",
+
+  authDomain: "team9-cfg-99712.firebaseapp.com",
+
+  projectId: "team9-cfg-99712",
+
+  storageBucket: "team9-cfg-99712.appspot.com",
+
+  messagingSenderId: "673571130811",
+
+  appId: "1:673571130811:web:5d5b97b9929938e5af089e",
+
+  measurementId: "G-728Z36QH6Q"
+
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
+function MyForm () {
   const [numSections, setNumSections] = useState(1);
 
   const [sectionData, setSectionData] = useState([
@@ -91,21 +115,21 @@ const MyForm = () => {
               answers: ['', '', ''],
               correctAnswer: 0,
             },
+            { 
+              type: 'qa',
+              question: '',
+              answers: ['', '', ''],
+              correctAnswer: 0,},
             {
               question: '',
               answers: ['', '', ''],
               correctAnswer: 0,
             },
-            {
+            { 
+              type: 'qa',
               question: '',
               answers: ['', '', ''],
-              correctAnswer: 0,
-            },
-            {
-              question: '',
-              answers: ['', '', ''],
-              correctAnswer: 0,
-            },
+              correctAnswer: 0, },
           ],
         })
       );
@@ -116,10 +140,30 @@ const MyForm = () => {
     }
   };
 
+
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(sectionData);
+    let formData = sectionData;
+    let content = [];
+    for (let i = 0; i < sectionData.length; i++) {
+      content.push({"checkpoint1": {"question": sectionData[i]["parts"][0]["question"], answers: sectionData[i]["parts"][0]["answers"], correctAnswer: sectionData[i]["parts"][0]["correctAnswer"]},
+                    "checkpoint2": {"question": sectionData[i]["parts"][1]["question"], answers: sectionData[i]["parts"][1]["answers"], correctAnswer: sectionData[i]["parts"][1]["correctAnswer"]},
+                    "checkpoint3": {"question": sectionData[i]["parts"][2]["question"], answers: sectionData[i]["parts"][2]["answers"], correctAnswer: sectionData[i]["parts"][2]["correctAnswer"]},
+                    "checkpoint4": {"question": sectionData[i]["parts"][3]["question"], answers: sectionData[i]["parts"][3]["answers"], correctAnswer: sectionData[i]["parts"][3]["correctAnswer"]},
+                    "checkpoint5": {"question": sectionData[i]["parts"][4]["question"], answers: sectionData[i]["parts"][4]["answers"], correctAnswer: sectionData[i]["parts"][4]["correctAnswer"]}
+                  });
+    }
+    let databaseEntry = {"name": "null", "content": content};
+    console.log(databaseEntry);
+    sendToDatabase(databaseEntry);
   };
+
+  async function sendToDatabase(databaseEntry) {
+    const docRef = await addDoc(collection(db, "curriculums"), databaseEntry);
+    console.log(docRef.id);
+  }
 
   return (
     <div className="max-w-lg mx-auto mt-8 p-4 border rounded shadow bg-white">
