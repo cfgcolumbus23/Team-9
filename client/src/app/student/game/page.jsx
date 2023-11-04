@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { Assessment } from "./components/assessment";
+import { Checkpoint } from "./components/checkpoint";
 
 const firebaseConfig = {
 
