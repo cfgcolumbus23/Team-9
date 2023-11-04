@@ -1,12 +1,12 @@
-import Image from "next/image";
-import Parents from "./images/parents.png";
-import Children from "./images/children.png";
-import Provider from "./images/provider.png";
-import Logo from "./images/logo.png";
-import LogoWhite from "./images/logo white.png";
-import styles from "./styles/globalStyles.module.css";
+import Image from 'next/image';
+import Parents from './images/parents.png';
+import Children from './images/children.png';
+import Provider from './images/provider.png';
+import Logo from './images/logo.png';
+import LogoWhite from './images/logo white.png';
+import styles from './styles/globalStyles.module.css';
 
-import React from "react";
+import React from 'react';
 
 export default function Desktop() {
   return (
@@ -31,15 +31,17 @@ export default function Desktop() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
           <div className="bg-white p-6 rounded-lg shadow-md">
             <Image src={Parents} alt="Parent" className="rounded-t-lg mb-4" />
-            <h2 className="my-5 text-lg md:text-xl">Find a provider!</h2>
+            <h2 className="my-5 text-lg md:text-xl">
+              View provider info and child progress!
+            </h2>
             <a
               href="http://localhost:3000/parent-page"
               target="_blank"
               rel="noopener noreferrer"
             >
-            <button className="w-full bg-blue-500 text-white p-3 rounded">
-              Parent
-            </button>
+              <button className="w-full bg-blue-500 text-white p-3 rounded">
+                Parent
+              </button>
             </a>
           </div>
 
