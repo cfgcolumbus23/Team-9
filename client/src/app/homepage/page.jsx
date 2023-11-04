@@ -9,6 +9,14 @@ import styles from './styles/globalStyles.module.css';
 import React from 'react';
 
 export default function Desktop() {
+  const onButtonPressed = async () => {
+    pushFeature('Provider');
+    //TODO - REPLACE WITH TWILIO ENDPOINT
+    //TODO - PASS IN CORRECT PAYLOAD
+    //hard code phone number, message, POST request params
+    await fetch('http://localhost:5000/send-sms', {});
+  }
+
   return (
     <div
       className={styles.container}
@@ -80,7 +88,7 @@ export default function Desktop() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="w-full bg-blue-500 text-white p-3 rounded">
+              <button className="w-full bg-blue-500 text-white p-3 rounded" onClick={onButtonPressed}>
                 Provider
               </button>
             </a>
