@@ -1,9 +1,9 @@
-import React from "react";
-import { ButtonPrimary } from "./ButtonPrimary";
-import { ButtonSecondary } from "./ButtonSecondary";
-import { CardBlog } from "./CardBlog";
+import React from 'react';
+import { ButtonPrimary } from './ButtonPrimary';
+import { ButtonSecondary } from './ButtonSecondary';
+import { CardBlog } from './CardBlog';
 
-export const Desktop = () => {
+export default function Desktop() {
   return (
     <div className="bg-white flex flex-row justify-center w-full">
       <div className="bg-white overflow-hidden w-[1920px] h-[1080px] relative">
@@ -100,19 +100,19 @@ export const Desktop = () => {
               Columbus, Ohio 43215
             </div>
             <div className="top-[114px] left-[713px] absolute [font-family:'Roboto-Regular',Helvetica] font-normal text-black text-[14px] tracking-[0] leading-[19.7px] whitespace-nowrap">
-              {""}
+              {''}
             </div>
             <div className="top-[135px] left-[713px] absolute [font-family:'Roboto-Regular',Helvetica] font-normal text-black text-[14px] tracking-[0] leading-[19.7px] whitespace-nowrap">
-              {""}
+              {''}
             </div>
             <div className="top-[94px] left-[1247px] absolute [font-family:'Roboto-Regular',Helvetica] font-normal text-black text-[14px] tracking-[0] leading-[19.7px] whitespace-nowrap">
-              {""}
+              {''}
             </div>
             <div className="top-[135px] left-[1247px] absolute [font-family:'Roboto-Regular',Helvetica] font-normal text-black text-[14px] tracking-[0] leading-[19.7px] whitespace-nowrap">
-              {""}
+              {''}
             </div>
             <div className="top-[135px] left-[1513px] absolute [font-family:'Roboto-Regular',Helvetica] font-normal text-black text-[14px] tracking-[0] leading-[19.7px] whitespace-nowrap">
-              {""}
+              {''}
             </div>
             <div className="left-[980px] whitespace-nowrap absolute top-[69px] [font-family:'Roboto-Bold',Helvetica] font-bold text-white text-[14px] tracking-[0] leading-[19.7px]">
               Phone: 614-502-1837
@@ -121,7 +121,7 @@ export const Desktop = () => {
               Email: info@futurereadyfive.org
             </div>
             <div className="left-[1513px] absolute top-[69px] [font-family:'Roboto-Bold',Helvetica] font-bold text-white text-[14px] tracking-[0] leading-[19.7px]">
-              {""}
+              {''}
             </div>
           </div>
           <img
@@ -136,6 +136,7 @@ export const Desktop = () => {
       </div>
     </div>
   );
+<<<<<<< HEAD
 };
 
 import React from "react";
@@ -217,4 +218,6 @@ export default function Desktop() {
       </div>
     </div>
   );
+=======
+>>>>>>> d45a6484f68538171f4e8c65f9a8ff1fb80fdbf4
 }
