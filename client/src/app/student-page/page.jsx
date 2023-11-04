@@ -1,6 +1,6 @@
-import Image from "next/image";
-import React from "react";
-import child from "./images/childDrawing.png";
+import Image from 'next/image';
+import React from 'react';
+import child from './images/childDrawing.png';
 
 export default function Desktop() {
   return (
@@ -12,9 +12,16 @@ export default function Desktop() {
             alt="Future Ready Five Logo"
             className="w-[25%]"
           />
-          <button className="bg-blue-600 text-white py-2 px-4 rounded">
-            Sign up
-          </button>
+          <a
+            href="https://futurereadyfive.org/"
+            target="_blank"
+            rel="noopener
+            noreferrer"
+          >
+            <button className="bg-blue-600 text-white py-2 px-4 rounded">
+              Sign up
+            </button>
+          </a>
         </div>
 
         <div className="text-center my-10">
@@ -44,18 +51,24 @@ export default function Desktop() {
                 name="password"
                 className="w-full p-2 my-1 border-2"
               />
-              <button
-                style={{ marginTop: "0.5in" }}
-                className="bg-blue-600 text-white py-2 px-4 rounded"
+              <a
+                href="http://localhost:3000/student/game"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Login
-              </button>
+                <button
+                  style={{ marginTop: '0.5in' }}
+                  className="bg-blue-600 text-white py-2 px-4 rounded"
+                >
+                  Login
+                </button>
+              </a>
             </div>
           </div>
         </div>
 
         <div
-          style={{ marginTop: "0.5in" }}
+          style={{ marginTop: '0.5in' }}
           className="bg-[#005959] text-white py-4 flex justify-between items-center"
         >
           <img

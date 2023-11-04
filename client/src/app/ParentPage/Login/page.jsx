@@ -13,9 +13,15 @@ export default function Desktop() {
             src="https://futurereadyfive.org/wp-content/uploads/2022/08/FR5-horizontal-logo.png"
             alt="Future Ready Five"
           />
-          <button className="bg-purple-600 text-white py-2 px-4 rounded">
-            Sign up
-          </button>
+          <a
+            href="https://futurereadyfive.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="bg-blue-600 text-white py-2 px-4 rounded">
+              Sign up
+            </button>
+          </a>
         </div>
 
         <div className="text-center my-10 px-4">
@@ -52,12 +58,18 @@ export default function Desktop() {
                 className="w-full p-2 my-1 border-2"
               />
             </div>
-            <button
-              className="bg-purple-600 text-white py-2 px-4 rounded"
-              style={{ marginTop: '0.5in' }}
+            <a
+              href="http://localhost:3000/ParentPage/ParentPageContent"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Login
-            </button>
+              <button
+                className="bg-blue-600 text-white py-2 px-4 rounded"
+                style={{ marginTop: '0.5in' }}
+              >
+                Login
+              </button>
+            </a>
           </div>
         </div>
 
