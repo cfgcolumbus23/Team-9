@@ -1,7 +1,7 @@
-import React from "react";
-import Image from "next/image";
-import childDrawing from "./Image/parents.png";
-import LogoWhite from "./Image/logo white.png";
+import React from 'react';
+import Image from 'next/image';
+import childDrawing from './Image/parents.png';
+import LogoWhite from './Image/logo white.png';
 
 export default function Desktop() {
   return (
@@ -13,11 +13,9 @@ export default function Desktop() {
             src="https://futurereadyfive.org/wp-content/uploads/2022/08/FR5-horizontal-logo.png"
             alt="Future Ready Five"
           />
-          <button className="bg-purple-600 text-white py-2 px-4 rounded">
-            Sign up
-          </button>
         </div>
 
+<<<<<<< HEAD
         <div className="text-center my-10 px-4">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
             Lets Learn!
@@ -104,6 +102,12 @@ export default function Desktop() {
             </button>
           </div>
         </div>
+=======
+        <h2 class="text-2xl font-bold mb-4">Child Statistics</h2>
+        <p class="mb-2">Sections Completed: 10</p>
+        <p class="mb-2">Assessments Taken: 2</p>
+        <p>Percentage of Correct Answers: 82%</p>
+>>>>>>> 497a715f6bf58b207462c8cdfc47c1f312760b60
 
         {/* Footer */}
         <div className="mt-8 bg-[#005959]">
