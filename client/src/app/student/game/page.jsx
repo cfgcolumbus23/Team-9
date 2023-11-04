@@ -36,7 +36,7 @@ export default function game() {
             setContent(docSnap.data().content);
             // setContent(docSnap.data().content);
         }
-        useEffect(() => {getData();}, [])
+        useEffect(() => {getData();}, [content])
         function enterCheckpoint() {
             toggleInCheckpoint(true);
         }
