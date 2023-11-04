@@ -1,4 +1,8 @@
 
+import Image from 'next/image'
+import Parents from './images/parents.png';
+import Children from './images/children.png';
+import Provider from './images/provider.png';
 
 import React from "react";
 
@@ -11,15 +15,17 @@ export default function Desktop() {
           <h1 className="text-2xl font-semibold text-gray-800">
             Customize Your Learning!
           </h1>
-          <button className="bg-blue-500 text-white px-6 py-2 rounded">
-            Sign up
-          </button>
+          <a href="https://futurereadyfive.org/" target="_blank" rel="noopener noreferrer">
+            <button className="bg-blue-500 text-white px-6 py-2 rounded">
+              Sign up
+            </button>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <img
-              src="path_to_parent_image.jpg"
+            <Image
+              src={Parents}
               alt="Parent"
               className="rounded-t-lg mb-4"
             />
@@ -32,31 +38,35 @@ export default function Desktop() {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <img
-              src="path_to_student_image.jpg"
+            <Image
+              src={Children}
               alt="Student"
               className="rounded-t-lg mb-4"
             />
             <h2 className="text-xl font-medium text-gray-800 mb-4">
               Play games and view progress!
             </h2>
-            <button className="w-full bg-blue-500 text-white p-3 rounded">
-              Student
-            </button>
+            <a href="http://localhost:3000/student" target="_blank" rel="noopener noreferrer">
+              <button className="w-full bg-blue-500 text-white p-3 rounded">
+                Student
+              </button>
+            </a>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <img
-              src="path_to_provider_image.jpg"
+            <Image
+              src={Provider}
               alt="Provider"
               className="rounded-t-lg mb-4"
             />
             <h2 className="text-xl font-medium text-gray-800 mb-4">
               Create learning game!
             </h2>
-            <button className="w-full bg-blue-500 text-white p-3 rounded">
-              Provider
-            </button>
+            <a href="http://localhost:3000/provider" target="_blank" rel="noopener noreferrer">
+              <button className="w-full bg-blue-500 text-white p-3 rounded">
+                Provider
+              </button>
+            </a>
           </div>
         </div>
 
@@ -81,3 +91,5 @@ export default function Desktop() {
   );
 
 }
+
+
