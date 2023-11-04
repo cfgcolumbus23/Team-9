@@ -176,7 +176,7 @@ export default function game() {
       ]); // Static data before we get firestore sorted
     const [inCheckpoint, toggleInCheckpoint] = useState(false);
     const [assessmentReady, toggleAssessmentReady] = useState(false);
-    const [progress, setProgress] = useState(6);
+    const [progress, setProgress] = useState(1);
     useEffect(() => {
         if (progress == 6) {
             toggleAssessmentReady(true);
