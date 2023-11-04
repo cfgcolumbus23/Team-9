@@ -29,6 +29,7 @@ export default function Answer(props) {
 
   function closePopup() {
     setPopupVisible(false);
+    props.stateChanger(false);
   }
 
   return (

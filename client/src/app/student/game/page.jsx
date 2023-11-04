@@ -20,6 +20,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+
   
 export default function game() {
     
@@ -27,6 +28,8 @@ export default function game() {
     const [content, setContent] = useState();
     const [inCheckpoint, toggleInCheckpoint] = useState(false);
     const [progress, setProgress] = useState(1);
+    const colors = ["bg-red-100", "bg-orange-100", "bg-yellow-100", "bg-green-100", "bg-blue-100", "bg-purple-100", "bg-violet-100"];
+
     // populate content
     
     function Map() {
@@ -41,27 +44,38 @@ export default function game() {
             toggleInCheckpoint(true);
         }
         return (
-            <div class="w-[1280px] h-[832px] relative bg-white">
+            <div className="background-image">
+                <div class="w-[1280px] h-[832px] relative bg-transparent">
                     <div class="left-[85px] top-[235px] absolute">
                         <button onClick={enterCheckpoint}>
-                            <Checkpoint type="quiz"/>
+                            <Checkpoint type="quiz" color="bg-red-500" number="1"/>
                         </button>
                     </div>
-                    <div class="w-[95px] h-[95px] left-[501px] top-[471px] absolute bg-zinc-300 rounded-full">
-                        <Checkpoint type="quiz" />
+                    <div class="w-[95px] h-[95px] left-[501px] top-[471px] absolute">
+                        <button onClick={enterCheckpoint}>
+                            <Checkpoint type="quiz" color="bg-blue-500" number="2"/>
+                        </button>
                     </div>
-                    <div class="w-[95px] h-[95px] left-[701px] top-[304px] absolute bg-zinc-300 rounded-full">
-                        <Checkpoint type="lesson" />  
+                    <div class="w-[95px] h-[95px] left-[701px] top-[304px] absolute">
+                        <button onClick={enterCheckpoint}>
+                            <Checkpoint type="lesson" color="bg-purple-500" number="3"/>  
+                        </button>
                     </div>
-                    <div class="w-[95px] h-[95px] left-[934px] top-[201px] absolute bg-zinc-300 rounded-full">
-                        <Checkpoint type="quiz" />
+                    <div class="w-[95px] h-[95px] left-[934px] top-[201px] absolute">
+                        <button onClick={enterCheckpoint}>
+                            <Checkpoint type="quiz" color="bg-orange-500" number="4"/>
+                        </button>
                     </div>
-                    <div class="w-[95px] h-[95px] left-[265px] top-[403px] absolute bg-zinc-300">
-                        <Checkpoint type="quiz" />
+                    <div class="w-[95px] h-[95px] left-[265px] top-[403px] absolute">
+                        <button onClick={enterCheckpoint}>
+                            <Checkpoint type="quiz" color="bg-green-500" number="5"/>
+                        </button>
                     </div>
                     
                     <div class="top-[266px] left-[1028px] absolute">
-                        <Assessment />
+                        <button onClick={enterCheckpoint}>
+                            <Assessment />
+                        </button>
                     </div>
                     <div class="absolute left-[100px] top-[320px]">
                         <svg width="164" height="139" viewBox="0 0 164 139" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,6 +93,7 @@ export default function game() {
                         </svg> 
                     </div>
                 </div>
+            </div>
         )
     }
     // Define checkpoints based on progress
@@ -86,7 +101,7 @@ export default function game() {
     return (
         <div>
             <h1 class="text-2xl pt-7" align="center">World {world}</h1>
-            {inCheckpoint ? <Answer question={content["sections"][world-1][checkpoints[progress]]["question"]}/> : <Map />}
+            {inCheckpoint ? <Answer question={content["sections"][world-1][checkpoints[progress]]["question"]} stateChanger={toggleInCheckpoint}/> : <Map />}
         </div>
     )
     
