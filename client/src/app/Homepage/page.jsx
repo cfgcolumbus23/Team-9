@@ -3,15 +3,17 @@ import Image from 'next/image'
 import Parents from './images/parents.png';
 import Children from './images/children.png';
 import Provider from './images/provider.png';
+import Logo from './images/logo.png';
+import styles from './styles/globalStyles.module.css';
 
 import React from "react";
 
 export default function Desktop() {
   return (
-    <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+    <div className={styles.container}>
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div className="flex items-center justify-between px-4 py-6 mb-8 bg-white shadow-md">
-          <img src="path_to_logo.png" alt="Logo" className="h-10 w-auto" />
+        <div className={styles.container}>
+          <Image src={Logo} alt="Logo" className="h-10 w-auto" />
           <h1 className="text-2xl font-semibold text-gray-800">
             Customize Your Learning!
           </h1>
@@ -64,9 +66,9 @@ export default function Desktop() {
           </div>
         </div>
 
-        <div className="mt-12 bg-white p-6 rounded-lg shadow-md">
+        <div className={styles.container}>
           <div className="flex justify-between items-center mb-4">
-            <img src="path_to_logo.png" alt="Logo" className="h-10 w-auto" />
+            <Image src={Logo} alt="Logo" className="h-10 w-auto" />
             <div className="text-gray-600">
               <p>215 North Front St, Ste 620</p>
               <p>Columbus, Ohio 43215</p>
