@@ -1,18 +1,44 @@
 
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Answer from "./components/answer";
 
 import { Checkpoint } from "./components/checkpoint"; 
 import { Assessment } from "./components/assessment";
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCnEFkLf2Gd_jicpvlF6XtgCrobiAYfB5o",
+    authDomain: "team9-cfg.firebaseapp.com",
+    projectId: "team9-cfg",
+    storageBucket: "team9-cfg.appspot.com",
+    messagingSenderId: "440629287793",
+    appId: "1:440629287793:web:aca2d5c2f3fb22024eb4d0",
+    measurementId: "G-E04K122175"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+  
 export default function game() {
+    
     const [world, setWorld] = useState(1);
     const [content, setContent] = useState();
     const [inCheckpoint, toggleInCheckpoint] = useState(false);
     const [progress, setProgress] = useState(1);
+    // populate content
+    
     function Map() {
+        const getData = async () => {
+            const docRef = doc(db, "curriculums", "f3vN3ODPq2iyTa6Cbsx2");
+            const docSnap = await getDoc(docRef);
+            setContent(docSnap.data().content);
+            // setContent(docSnap.data().content);
+        }
+        useEffect(() => {getData();}, [])
         function enterCheckpoint() {
-            
+            toggleInCheckpoint(true);
         }
         return (
             <div class="w-[1280px] h-[832px] relative bg-white">
@@ -58,7 +84,7 @@ export default function game() {
     return (
         <div>
             <h1 class="text-2xl pt-7" align="center">World {world}</h1>
-            {inCheckpoint ? <Answer question="Test Question"/> : <Map />}
+            {inCheckpoint ? <Answer question={content["section1"]["checkpoint1"]["question"]}/> : <Map />}
         </div>
     )
 }
