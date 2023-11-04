@@ -5,28 +5,25 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, addDoc, collection } from 'firebase/firestore';
 
 const firebaseConfig = {
+  apiKey: '***REMOVED***',
 
-  apiKey: "***REMOVED***",
+  authDomain: 'team9-cfg-99712.firebaseapp.com',
 
-  authDomain: "team9-cfg-99712.firebaseapp.com",
+  projectId: 'team9-cfg-99712',
 
-  projectId: "team9-cfg-99712",
+  storageBucket: 'team9-cfg-99712.appspot.com',
 
-  storageBucket: "team9-cfg-99712.appspot.com",
+  messagingSenderId: '673571130811',
 
-  messagingSenderId: "673571130811",
+  appId: '1:673571130811:web:5d5b97b9929938e5af089e',
 
-  appId: "1:673571130811:web:5d5b97b9929938e5af089e",
-
-  measurementId: "G-728Z36QH6Q"
-
+  measurementId: 'G-728Z36QH6Q',
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-
-function MyForm () {
+function MyForm() {
   const [numSections, setNumSections] = useState(1);
 
   const [sectionData, setSectionData] = useState([
@@ -115,21 +112,23 @@ function MyForm () {
               answers: ['', '', ''],
               correctAnswer: 0,
             },
-            { 
+            {
               type: 'qa',
               question: '',
               answers: ['', '', ''],
-              correctAnswer: 0,},
+              correctAnswer: 0,
+            },
             {
               question: '',
               answers: ['', '', ''],
               correctAnswer: 0,
             },
-            { 
+            {
               type: 'qa',
               question: '',
               answers: ['', '', ''],
-              correctAnswer: 0, },
+              correctAnswer: 0,
+            },
           ],
         })
       );
@@ -140,28 +139,47 @@ function MyForm () {
     }
   };
 
-
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(sectionData);
     let formData = sectionData;
     let content = [];
     for (let i = 0; i < sectionData.length; i++) {
-      content.push({"checkpoint1": {"question": sectionData[i]["parts"][0]["question"], answers: sectionData[i]["parts"][0]["answers"], correctAnswer: sectionData[i]["parts"][0]["correctAnswer"]},
-                    "checkpoint2": {"question": sectionData[i]["parts"][1]["question"], answers: sectionData[i]["parts"][1]["answers"], correctAnswer: sectionData[i]["parts"][1]["correctAnswer"]},
-                    "checkpoint3": {"question": sectionData[i]["parts"][2]["question"], answers: sectionData[i]["parts"][2]["answers"], correctAnswer: sectionData[i]["parts"][2]["correctAnswer"]},
-                    "checkpoint4": {"question": sectionData[i]["parts"][3]["question"], answers: sectionData[i]["parts"][3]["answers"], correctAnswer: sectionData[i]["parts"][3]["correctAnswer"]},
-                    "checkpoint5": {"question": sectionData[i]["parts"][4]["question"], answers: sectionData[i]["parts"][4]["answers"], correctAnswer: sectionData[i]["parts"][4]["correctAnswer"]}
-                  });
+      content.push({
+        checkpoint1: {
+          question: sectionData[i]['parts'][0]['question'],
+          answers: sectionData[i]['parts'][0]['answers'],
+          correctAnswer: sectionData[i]['parts'][0]['correctAnswer'],
+        },
+        checkpoint2: {
+          question: sectionData[i]['parts'][1]['question'],
+          answers: sectionData[i]['parts'][1]['answers'],
+          correctAnswer: sectionData[i]['parts'][1]['correctAnswer'],
+        },
+        checkpoint3: {
+          question: sectionData[i]['parts'][2]['question'],
+          answers: sectionData[i]['parts'][2]['answers'],
+          correctAnswer: sectionData[i]['parts'][2]['correctAnswer'],
+        },
+        checkpoint4: {
+          question: sectionData[i]['parts'][3]['question'],
+          answers: sectionData[i]['parts'][3]['answers'],
+          correctAnswer: sectionData[i]['parts'][3]['correctAnswer'],
+        },
+        checkpoint5: {
+          question: sectionData[i]['parts'][4]['question'],
+          answers: sectionData[i]['parts'][4]['answers'],
+          correctAnswer: sectionData[i]['parts'][4]['correctAnswer'],
+        },
+      });
     }
-    let databaseEntry = {"name": "null", "content": content};
+    let databaseEntry = { name: 'null', content: content };
     console.log(databaseEntry);
     sendToDatabase(databaseEntry);
   };
 
   async function sendToDatabase(databaseEntry) {
-    const docRef = await addDoc(collection(db, "curriculums"), databaseEntry);
+    const docRef = await addDoc(collection(db, 'curriculums'), databaseEntry);
     console.log(docRef.id);
   }
 
@@ -177,20 +195,8 @@ function MyForm () {
             value={numSections}
             onChange={handleNumSectionsChange}
             min="1"
-            className="form-input w-16"
+            className="form-input w-16 w-full max-w-xs border border-gray-300 rounded"
           />
-          <button
-            onClick={() => setNumSections(numSections + 1)}
-            className="ml-2 px-3 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-          >
-            +
-          </button>
-          <button
-            onClick={() => setNumSections(Math.max(1, numSections - 1))}
-            className="ml-2 px-3 py-2 bg-red-500 text-white rounded hover:bg-red-700"
-          >
-            -
-          </button>
         </div>
       </div>
       {sectionData.map((section) => (
@@ -213,7 +219,7 @@ function MyForm () {
                         e.target.value
                       )
                     }
-                    className="form-input w-full"
+                    className="form-input w-full max-w-xs border  border-gray-300 rounded"
                   />
                 </div>
                 <div className="mt-4">
@@ -222,7 +228,7 @@ function MyForm () {
                   </label>
                   {item.answers.map((answer, ansIndex) => (
                     <div key={ansIndex} className="flex items-center">
-                      <div>{`Answer ${ansIndex + 1}:`}</div>
+                      <div className="text-sm">{`Answer ${ansIndex + 1}:`}</div>
                       <input
                         type="text"
                         value={answer}
@@ -234,7 +240,7 @@ function MyForm () {
                             e.target.value
                           )
                         }
-                        className="form-input w-full ml-2"
+                        className="form-input w-full  max-w-xs ml-2 border border-gray-300 rounded"
                       />
                       {ansIndex === item.correctAnswer && (
                         <div className="ml-2">(Correct)</div>
@@ -275,6 +281,6 @@ function MyForm () {
       </button>
     </div>
   );
-};
+}
 
 export default MyForm;
