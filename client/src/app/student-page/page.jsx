@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import childDrawing from "./image/childDrawing.png";
+import LogoWhite from "./image/logo white.png";
 
 export default function Desktop() {
   return (
@@ -59,29 +60,23 @@ export default function Desktop() {
             </button>
           </div>
         </div>
+
         {/* Footer */}
-        <div
-          className="bg-[#005959] text-white py-4 px-4 flex justify-between items-center"
-          style={{ marginTop: "0.5in" }}
-        >
-          <img
-            src="https://futurereadyfive.org/wp-content/uploads/2022/08/foot-logo03@4x.png"
-            alt="Future Ready Five"
-            className="w-1/4 md:w-1/6 lg:w-1/8"
-          />
-          <div className="flex flex-1 flex-col md:flex-row justify-end items-center md:items-end text-sm space-y-4 md:space-y-0 md:space-x-10">
-            <div className="text-center md:text-right">
-              <p>© 2022 Future Ready Five. All Rights Reserved</p>
-            </div>
-            <div className="text-center md:text-right">
+        <div className="mt-8 bg-[#005959]">
+          <div className="flex justify-between items-center mb-4">
+            <Image src={LogoWhite} alt="Logo" className="h-10 w-auto" />
+            <div className="text-white">
               <p>215 North Front St, Ste 620</p>
               <p>Columbus, Ohio 43215</p>
             </div>
-            <div className="text-center md:text-right">
-              <p>Phone: 614-502-1837</p>
-              <p>Email: info@futurereadyfive.org</p>
+            <div>
+              <p className="text-white">Phone: 614-502-1837</p>
+              <p className="text-white">Email: info@futurereadyfive.org</p>
             </div>
           </div>
+          <p className="text-center text-white">
+            &copy; 2022 Future Ready Five. All Rights Reserved
+          </p>
         </div>
       </div>
     </div>
