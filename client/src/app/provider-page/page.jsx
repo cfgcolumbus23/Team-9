@@ -38,6 +38,19 @@ function MyForm () {
         { question: '', answers: ['', '', ''], correctAnswer: 0 },
         { question: '', answers: ['', '', ''], correctAnswer: 0 },
         { question: '', answers: ['', '', ''], correctAnswer: 0 },
+        {
+          type: 'assessment',
+          question1: '',
+          answers1: ['', '', ''],
+          correctAnswer1: 0,
+          question2: '',
+          answers2: ['', '', ''],
+          correctAnswer2: 0,
+          questopm3: '',
+          answers3: ['', '', ''],
+          correctAnswer3: 0,
+        }
+        
       ],
     },
   ]);
@@ -55,7 +68,6 @@ function MyForm () {
     );
     setSectionData(updatedData);
   };
-
   const handleAnswerChange = (sectionId, partIndex, answerIndex, value) => {
     const updatedData = sectionData.map((section) =>
       section.id === sectionId
@@ -81,6 +93,81 @@ function MyForm () {
     setSectionData(updatedData);
   };
 
+  const handleAnswerChangeAssessmentq1 = (sectionId, partIndex, answerIndex, value) => {
+    const updatedData = sectionData.map((section) =>
+      section.id === sectionId
+        ? {
+            ...section,
+            parts: section.parts.map((part, index) =>
+              index === partIndex
+                ? {
+                    ...part,
+                    answers1: part.answers1.map((ans, ansIndex) =>
+                      ansIndex === answerIndex ? value : ans
+                    ),
+                    correctAnswer1: Math.min(
+                      answerIndex,
+                      Math.max(0, part.correctAnswer1)
+                    ),
+                  }
+                : part
+            ),
+          }
+        : section
+    );
+    setSectionData(updatedData);
+  };
+
+  const handleAnswerChangeAssessmentq2 = (sectionId, partIndex, answerIndex, value) => {
+    const updatedData = sectionData.map((section) =>
+      section.id === sectionId
+        ? {
+            ...section,
+            parts: section.parts.map((part, index) =>
+              index === partIndex
+                ? {
+                    ...part,
+                    answers2: part.answers2.map((ans, ansIndex) =>
+                      ansIndex === answerIndex ? value : ans
+                    ),
+                    correctAnswer2: Math.min(
+                      answerIndex,
+                      Math.max(0, part.correctAnswer2)
+                    ),
+                  }
+                : part
+            ),
+          }
+        : section
+    );
+    setSectionData(updatedData);
+  };
+
+  const handleAnswerChangeAssessmentq3 = (sectionId, partIndex, answerIndex, value) => {
+    const updatedData = sectionData.map((section) =>
+      section.id === sectionId
+        ? {
+            ...section,
+            parts: section.parts.map((part, index) =>
+              index === partIndex
+                ? {
+                    ...part,
+                    answers3: part.answers3.map((ans, ansIndex) =>
+                      ansIndex === answerIndex ? value : ans
+                    ),
+                    correctAnswer3: Math.min(
+                      answerIndex,
+                      Math.max(0, part.correctAnswer3)
+                    ),
+                  }
+                : part
+            ),
+          }
+        : section
+    );
+    setSectionData(updatedData);
+  };
+
   const handleCorrectAnswerChange = (sectionId, partIndex, value) => {
     const updatedData = sectionData.map((section) =>
       section.id === sectionId
@@ -88,6 +175,48 @@ function MyForm () {
             ...section,
             parts: section.parts.map((part, index) =>
               index === partIndex ? { ...part, correctAnswer: value } : part
+            ),
+          }
+        : section
+    );
+    setSectionData(updatedData);
+  };
+
+  const handleCorrectAnswerChangeAssessmentq1 = (sectionId, partIndex, value) => {
+    const updatedData = sectionData.map((section) =>
+      section.id === sectionId
+        ? {
+            ...section,
+            parts: section.parts.map((part, index) =>
+              index === partIndex ? { ...part, correctAnswer1: value } : part
+            ),
+          }
+        : section
+    );
+    setSectionData(updatedData);
+  };
+
+  const handleCorrectAnswerChangeAssessmentq2 = (sectionId, partIndex, value) => {
+    const updatedData = sectionData.map((section) =>
+      section.id === sectionId
+        ? {
+            ...section,
+            parts: section.parts.map((part, index) =>
+              index === partIndex ? { ...part, correctAnswer2: value } : part
+            ),
+          }
+        : section
+    );
+    setSectionData(updatedData);
+  };
+
+  const handleCorrectAnswerChangeAssessmentq3 = (sectionId, partIndex, value) => {
+    const updatedData = sectionData.map((section) =>
+      section.id === sectionId
+        ? {
+            ...section,
+            parts: section.parts.map((part, index) =>
+              index === partIndex ? { ...part, correctAnswer3: value } : part
             ),
           }
         : section
@@ -130,6 +259,18 @@ function MyForm () {
               question: '',
               answers: ['', '', ''],
               correctAnswer: 0, },
+            {
+              type: 'assessment',
+              question1: '',
+              answers1: ['', '', ''],
+              correctAnswer1: 0,
+              question2: '',
+              answers2: ['', '', ''],
+              correctAnswer2: 0,
+              questopm3: '',
+              answers3: ['', '', ''],
+              correctAnswer3: 0,
+            }
           ],
         })
       );
@@ -152,7 +293,10 @@ function MyForm () {
                     "checkpoint2": {"question": sectionData[i]["parts"][1]["question"], answers: sectionData[i]["parts"][1]["answers"], correctAnswer: sectionData[i]["parts"][1]["correctAnswer"]},
                     "checkpoint3": {"question": sectionData[i]["parts"][2]["question"], answers: sectionData[i]["parts"][2]["answers"], correctAnswer: sectionData[i]["parts"][2]["correctAnswer"]},
                     "checkpoint4": {"question": sectionData[i]["parts"][3]["question"], answers: sectionData[i]["parts"][3]["answers"], correctAnswer: sectionData[i]["parts"][3]["correctAnswer"]},
-                    "checkpoint5": {"question": sectionData[i]["parts"][4]["question"], answers: sectionData[i]["parts"][4]["answers"], correctAnswer: sectionData[i]["parts"][4]["correctAnswer"]}
+                    "checkpoint5": {"question": sectionData[i]["parts"][4]["question"], answers: sectionData[i]["parts"][4]["answers"], correctAnswer: sectionData[i]["parts"][4]["correctAnswer"]},
+                    "assessment": {"question1": sectionData[i]["parts"][5]["question1"], answers1: sectionData[i]["parts"][5]["answers1"], correctAnswer1: sectionData[i]["parts"][5]["correctAnswer1"],
+                                  "question2": sectionData[i]["parts"][5]["question2"], answers2: sectionData[i]["parts"][5]["answers2"], correctAnswer2: sectionData[i]["parts"][5]["correctAnswer2"],
+                                  "question3": sectionData[i]["parts"][5]["question3"], answers3: sectionData[i]["parts"][5]["answers3"], correctAnswer3: sectionData[i]["parts"][5]["correctAnswer3"]}
                   });
     }
     let databaseEntry = {"name": "null", "content": content};
@@ -196,7 +340,7 @@ function MyForm () {
       {sectionData.map((section) => (
         <div key={section.id} className="mb-6">
           <form>
-            {section.parts.map((item, index) => (
+            {section.parts.slice(0,5).map((item, index) =>  /*only gets checkpoints 1-5*/( 
               <div key={index} className="mb-4">
                 <div className="mt-4">
                   <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -264,6 +408,211 @@ function MyForm () {
                 </div>
               </div>
             ))}
+
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+                    ASSESSMENT:
+            </label>
+            <div className="mb-4">
+
+                <div className="mt-4">
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                    Question 1:
+                  </label>
+                  <input
+                    type="text"
+                    value={section.parts[5].question1}
+                    onChange={(e) =>
+                      handleInputChange(
+                        section.id,
+                        5,
+                        'question1',
+                        e.target.value
+                      )
+                    }
+                    className="form-input w-full"
+                  />
+                </div>
+                <div className="mt-4">
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                    Possible Answers:
+                  </label>
+                  {section.parts[5].answers1.map((answer, ansIndex) => (
+                    <div key={ansIndex} className="flex items-center">
+                      <div>{`Answer ${ansIndex + 1}:`}</div>
+                      <input
+                        type="text"
+                        value={answer}
+                        onChange={(e) =>
+                          handleAnswerChangeAssessmentq1(
+                            section.id,
+                            5,
+                            ansIndex,
+                            e.target.value
+                          )
+                        }
+                        className="form-input w-full ml-2"
+                      />
+                      {ansIndex === section.parts[5].correctAnswer1 && (
+                        <div className="ml-2">(Correct)</div>
+                      )}
+                    </div>
+                  ))}
+                  <div className="mt-2">
+                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                      Correct Answer:
+                    </label>
+                    <select
+                      value={section.parts[5].correctAnswer1}
+                      onChange={(e) =>
+                        handleCorrectAnswerChangeAssessmentq1(
+                          section.id,
+                          5,
+                          parseInt(e.target.value, 10)
+                        )
+                      }
+                      className="form-select w-full"
+                    >
+                      <option value={0}>Answer 1</option>
+                      <option value={1}>Answer 2</option>
+                      <option value={2}>Answer 3</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div className="mb-4">
+
+                <div className="mt-4">
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                    Question 2:
+                  </label>
+                  <input
+                    type="text"
+                    value={section.parts[5].question2}
+                    onChange={(e) =>
+                      handleInputChange(
+                        section.id,
+                        5,
+                        'question2',
+                        e.target.value
+                      )
+                    }
+                    className="form-input w-full"
+                  />
+                </div>
+                <div className="mt-4">
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                    Possible Answers:
+                  </label>
+                  {section.parts[5].answers2.map((answer, ansIndex) => (
+                    <div key={ansIndex} className="flex items-center">
+                      <div>{`Answer ${ansIndex + 1}:`}</div>
+                      <input
+                        type="text"
+                        value={answer}
+                        onChange={(e) =>
+                          handleAnswerChangeAssessmentq2(
+                            section.id,
+                            5,
+                            ansIndex,
+                            e.target.value
+                          )
+                        }
+                        className="form-input w-full ml-2"
+                      />
+                      {ansIndex === section.parts[5].correctAnswer2 && (
+                        <div className="ml-2">(Correct)</div>
+                      )}
+                    </div>
+                  ))}
+                  <div className="mt-2">
+                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                      Correct Answer:
+                    </label>
+                    <select
+                      value={section.parts[5].correctAnswer2}
+                      onChange={(e) =>
+                        handleCorrectAnswerChangeAssessmentq2(
+                          section.id,
+                          5,
+                          parseInt(e.target.value, 10)
+                        )
+                      }
+                      className="form-select w-full"
+                    >
+                      <option value={0}>Answer 1</option>
+                      <option value={1}>Answer 2</option>
+                      <option value={2}>Answer 3</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div className="mb-4">
+
+                <div className="mt-4">
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                    Question 3:
+                  </label>
+                  <input
+                    type="text"
+                    value={section.parts[5].question3}
+                    onChange={(e) =>
+                      handleInputChange(
+                        section.id,
+                        5,
+                        'question3',
+                        e.target.value
+                      )
+                    }
+                    className="form-input w-full"
+                  />
+                </div>
+                <div className="mt-4">
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                    Possible Answers:
+                  </label>
+                  {section.parts[5].answers3.map((answer, ansIndex) => (
+                    <div key={ansIndex} className="flex items-center">
+                      <div>{`Answer ${ansIndex + 1}:`}</div>
+                      <input
+                        type="text"
+                        value={answer}
+                        onChange={(e) =>
+                          handleAnswerChangeAssessmentq3(
+                            section.id,
+                            5,
+                            ansIndex,
+                            e.target.value
+                          )
+                        }
+                        className="form-input w-full ml-2"
+                      />
+                      {ansIndex === section.parts[5].correctAnswer3 && (
+                        <div className="ml-2">(Correct)</div>
+                      )}
+                    </div>
+                  ))}
+                  <div className="mt-2">
+                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                      Correct Answer:
+                    </label>
+                    <select
+                      value={section.parts[5].correctAnswer3}
+                      onChange={(e) =>
+                        handleCorrectAnswerChangeAssessmentq3(
+                          section.id,
+                          5,
+                          parseInt(e.target.value, 10)
+                        )
+                      }
+                      className="form-select w-full"
+                    >
+                      <option value={0}>Answer 1</option>
+                      <option value={1}>Answer 2</option>
+                      <option value={2}>Answer 3</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
           </form>
         </div>
       ))}
