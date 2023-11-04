@@ -102,6 +102,76 @@ export default function game() {
               "5"
             ]
           }
+        }, 
+        {
+          "checkpoint5": {
+            "correctAnswer": 0,
+            "answers": [
+              "1",
+              "2",
+              "3"
+            ],
+            "question": "test question"
+          },
+          "checkpoint3": {
+            "question": "What is 6+3",
+            "correctAnswer": 2,
+            "answers": [
+              "1",
+              "3",
+              "9"
+            ]
+          },
+          "assessment": {
+            "correctAnswer1": 0,
+            "answers1": [
+              "10",
+              "20",
+              "30"
+            ],
+            "correctAnswer2": 1,
+            "answers3": [
+              "10",
+              "11",
+              "12"
+            ],
+            "question2": "What is 5-5?",
+            "question3": "What is 10+2?",
+            "answers2": [
+              "2",
+              "0",
+              "4"
+            ],
+            "question1": "What is 7+3?",
+            "correctAnswer3": 2
+          },
+          "checkpoint2": {
+            "correctAnswer": 0,
+            "question": "What is 1+1",
+            "answers": [
+              "2",
+              "1",
+              "4"
+            ]
+          },
+          "checkpoint4": {
+            "answers": [
+              "6",
+              "3",
+              "1"
+            ],
+            "question": "What is 9-3",
+            "correctAnswer": 0
+          },
+          "checkpoint1": {
+            "question": "What is 2+2",
+            "correctAnswer": 1,
+            "answers": [
+              "2",
+              "4",
+              "5"
+            ]
+          }
         }
       ]); // Static data before we get firestore sorted
     const [inCheckpoint, toggleInCheckpoint] = useState(false);
