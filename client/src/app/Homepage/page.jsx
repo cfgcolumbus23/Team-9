@@ -3,6 +3,7 @@ import Parents from "./images/parents.png";
 import Children from "./images/children.png";
 import Provider from "./images/provider.png";
 import Logo from "./images/logo.png";
+import LogoWhite from "./images/logo white.png";
 import styles from "./styles/globalStyles.module.css";
 
 import React from "react";
@@ -71,26 +72,19 @@ export default function Desktop() {
           </div>
         </div>
 
-        <div
-          className="bg-[#005959] text-white py-4 px-4 flex justify-between items-center"
-          style={{ marginTop: "0.5in" }}
-        >
+        <div className="mt-8 bg-[#005959]">
           <div className="flex justify-between items-center mb-4">
-            <Image
-              src="https://futurereadyfive.org/wp-content/uploads/2022/08/foot-logo03@4x.png"
-              alt="Logo"
-              className="h-10 w-auto"
-            />
-            <div className="text-gray-600">
+            <Image src={LogoWhite} alt="Logo" className="h-10 w-auto" />
+            <div className="text-white">
               <p>215 North Front St, Ste 620</p>
               <p>Columbus, Ohio 43215</p>
             </div>
             <div>
-              <p className="text-gray-600">Phone: 614-502-1837</p>
-              <p className="text-gray-600">Email: info@futurereadyfive.org</p>
+              <p className="text-white">Phone: 614-502-1837</p>
+              <p className="text-white">Email: info@futurereadyfive.org</p>
             </div>
           </div>
-          <p className="text-center text-gray-600">
+          <p className="text-center text-white">
             &copy; 2022 Future Ready Five. All Rights Reserved
           </p>
         </div>
