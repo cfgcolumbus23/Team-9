@@ -2,8 +2,6 @@
 "use client"
 import { useState, useEffect } from "react";
 
-import { Checkpoint } from "./components/checkpoint"; 
-import { Assessment } from "./components/assessment";
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
