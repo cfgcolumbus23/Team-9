@@ -86,7 +86,7 @@ export default function game() {
     return (
         <div>
             <h1 class="text-2xl pt-7" align="center">World {world}</h1>
-            {inCheckpoint ? <Answer question="Test Question"/> : <Map />}
+            {inCheckpoint ? <Answer question={content["section1"]["checkpoint1"]["question"]}/> : <Map />}
         </div>
     )
 }
