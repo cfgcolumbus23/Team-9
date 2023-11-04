@@ -39,10 +39,10 @@ export default function Desktop() {
           <div className="bg-white p-6 rounded-lg shadow-md">
             <Image src={Parents} alt="Parent" className="rounded-t-lg mb-4" />
             <h2 className="my-5 text-lg md:text-xl">
-              View provider info and child progress!
+              View your child's progress!
             </h2>
             <a
-              href="http://localhost:3000/parent-page"
+              href="http://localhost:3000/ParentPage/ParentPageContent"
               target="_blank"
               rel="noopener noreferrer"
             >
