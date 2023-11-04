@@ -47,7 +47,7 @@ export default function Desktop() {
           <img
             className="w-[250px] h-[40px] top-[56px] left-[146px] absolute object-cover"
             alt="Image"
-            src="image-2.png"
+            src="Team-9/client/src/app/student-page/Image/FutureReady5Logo.png"
           />
           <p className="absolute w-[307px] top-[114px] left-[117px] [font-family:'Roboto-Bold',Helvetica] font-bold text-white text-[14px] tracking-[0] leading-[19.7px]">
             © 2022 Future Ready Five. All Rights Reserved
