@@ -1,4 +1,8 @@
 
+import Image from 'next/image'
+import Parents from './images/parents.png';
+import Children from './images/children.png';
+import Provider from './images/provider.png';
 
 import React from "react";
 
@@ -18,8 +22,8 @@ export default function Desktop() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <img
-              src="path_to_parent_image.jpg"
+            <Image
+              src={Parents}
               alt="Parent"
               className="rounded-t-lg mb-4"
             />
@@ -32,8 +36,8 @@ export default function Desktop() {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <img
-              src="path_to_student_image.jpg"
+            <Image
+              src={Children}
               alt="Student"
               className="rounded-t-lg mb-4"
             />
@@ -46,8 +50,8 @@ export default function Desktop() {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <img
-              src="path_to_provider_image.jpg"
+            <Image
+              src={Provider}
               alt="Provider"
               className="rounded-t-lg mb-4"
             />
