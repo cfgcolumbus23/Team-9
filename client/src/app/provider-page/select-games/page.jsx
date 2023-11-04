@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./styles/globalStyles.css"; // Make sure this CSS file exists and is properly configured
-import mono from "./images/mono.jpeg";
+import mono from "./images/candlane.jpg";
 import minecraft from "./images/minecraft.jpeg";
 import rgb from "./images/rgb.jpeg";
 import React from "react";
@@ -42,7 +42,7 @@ export default function Desktop() {
           <div className="bg-white p-6 rounded-lg shadow-md">
             <Image src={mono} alt="candy" className="rounded-t-lg mb-4" />
             <h2 className="my-5 text-lg md:text-xl">
-              Monopoly version
+              CandyLane version
             </h2>
             <a
               href="http://localhost:3000/provider-page/content"
