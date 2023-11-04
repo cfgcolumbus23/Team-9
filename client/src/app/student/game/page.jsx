@@ -340,7 +340,7 @@ export default function game() {
         
         
         return (
-            <div class="">
+            <div class="box">
                 <div class="w-[1280px] h-[832px] relative bg-transparent">
                     <div class="left-[85px] top-[235px] absolute">
                         <button onClick={() => enterCheckpoint(1)}>
