@@ -26,9 +26,9 @@ app.get("/send-sms", (request, response) => {
     // Twilio code
 
     // Your Twilio Account SID. Get a free account at twilio.com/try-twilio
-    TWILIO_ACCOUNT_SID = "***REMOVED***"
+    TWILIO_ACCOUNT_SID = ""
     // Your Twilio Auth Token. You can get it at twilio.com/console
-    TWILIO_AUTH_TOKEN = "***REMOVED***"
+    TWILIO_AUTH_TOKEN = ""
     // The Twilio phone number you want to use to send SMS. Get one in the Twilio Console
     TWILIO_PHONE_NUMBER = "+18559130253"
 
